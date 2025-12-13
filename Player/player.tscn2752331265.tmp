@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cvudu1fei0nd4"]
+[gd_scene load_steps=16 format=3 uid="uid://cvudu1fei0nd4"]
 
 [ext_resource type="Script" uid="uid://mm12boanwct5" path="res://Player/Scripts/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://ctra6xb7fpc4r" path="res://Player/Sprites/Breaker1-Sheet.png" id="2_4ntmi"]
@@ -6,8 +6,7 @@
 [ext_resource type="Script" uid="uid://b5w83xya50h5k" path="res://Player/Scripts/state_idle.gd" id="4_gwnis"]
 [ext_resource type="Script" uid="uid://bgy0ck7ose5nl" path="res://Player/Scripts/state_walk.gd" id="5_k53q1"]
 [ext_resource type="Script" uid="uid://d24ep1jyyrmqo" path="res://Player/Scripts/state_attack.gd" id="6_fhl08"]
-[ext_resource type="Script" uid="uid://dik2vjc7kts4n" path="res://Player/Scripts/playerinteractionshost.gd" id="7_od3ui"]
-[ext_resource type="PackedScene" uid="uid://dbu48004vksq5" path="res://UtilNodes/hitbox/hitbox.tscn" id="7_vtle1"]
+[ext_resource type="PackedScene" uid="uid://dy4kxtfcn4i7q" path="res://UtilNodes/hurtbox/hurtbox.tscn" id="7_vtle1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_edjgo"]
 
@@ -116,9 +115,9 @@ script = ExtResource("1_4ntmi")
 shape = SubResource("CircleShape2D_edjgo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -15)
 scale = Vector2(2, 2)
 texture = ExtResource("2_4ntmi")
-offset = Vector2(0, -15)
 hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -141,16 +140,9 @@ script = ExtResource("6_fhl08")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Interactions" type="Node2D" parent="."]
-script = ExtResource("7_od3ui")
-
-[node name="Hitbox" parent="Interactions" instance=ExtResource("7_vtle1")]
-position = Vector2(0, 7)
-collision_layer = 0
+[node name="Hurtbox" parent="." instance=ExtResource("7_vtle1")]
 collision_mask = 256
-monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/Hitbox"]
-position = Vector2(0, 3)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_od3ui")
 debug_color = Color(0.99719375, 0, 0.18085247, 0.41960785)

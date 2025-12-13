@@ -5,12 +5,14 @@ var attacking : bool = false
 @onready var idle: State = $"../Idle"
 @onready var walk: State = $"../Walk"
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
+@onready var hitbox: HitBox = $"../../Interactions/Hitbox"
 
 
 ## What happens when the player enters this state?
 func Enter() -> void:
 	player.UpdateAnimation("attack")
 	attacking = true
+	hitbox.monitoring = true
 	# Bad substitute for no attack animation, use the commented code under it once you have a real one 
 	await get_tree().create_timer(0.2).timeout
 	EndAttack()
@@ -19,6 +21,9 @@ func Enter() -> void:
 
 # What happens when the player exits this state?
 func Exit() -> void:
+	# animation_player.animation_finished.disconnect(EndAttack)
+	attacking = false
+	hitbox.monitoring = false
 	pass
 
 # What happens during the _process update in this State?

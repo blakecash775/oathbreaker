@@ -2,11 +2,14 @@ class_name Player extends CharacterBody2D
 
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction: Vector2 = Vector2.DOWN
+# All tween stuff here is to substitute for missing animations, you can get rid of it when you add a real animation
 var _placeholder_tween: Tween
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine= $StateMachine
+
+signal DirectionChanged(new_direction: Vector2)
 
 func _ready() -> void:
 	state_machine.Initialize(self)
@@ -33,6 +36,8 @@ func SetDirection() -> bool:
 	if new_dir == cardinal_direction:
 		return false
 	cardinal_direction = new_dir
+	
+	DirectionChanged.emit(new_dir)
 	
 	return true
 
