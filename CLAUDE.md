@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Oathbreaker is a story-driven action roguelike game built with Godot 4.5 (Mobile renderer). The project is in early development with placeholder systems.
+Oathbreaker is a story-driven action roguelike game built with Godot 4.5 (Mobile renderer). The project is in early development with placeholder systems, but intends to have a strong focus on high mobity, momentum based combat.
 
 ## Running the Game
 

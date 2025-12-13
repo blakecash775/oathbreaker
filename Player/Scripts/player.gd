@@ -8,6 +8,7 @@ var _placeholder_tween: Tween
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine= $StateMachine
+@onready var walk: State_Walk = $StateMachine/Walk
 
 signal DirectionChanged(new_direction: Vector2)
 
@@ -54,7 +55,7 @@ func UpdateAnimation(state: String) -> void:
 		_placeholder_tween.tween_property(sprite, "position", cardinal_direction * 8, 0.1)
 		_placeholder_tween.tween_property(sprite, "position", Vector2.ZERO, 0.1)
 	elif state == 'walk':
-		animation_player.speed_scale = 4
+		animation_player.speed_scale = 4 + (walk.move_speed / 100)
 	else:
 		animation_player.speed_scale = 1
 
