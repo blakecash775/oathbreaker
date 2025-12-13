@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dh500e5g6krvr"]
 
 [ext_resource type="PackedScene" uid="uid://dy4kxtfcn4i7q" path="res://UtilNodes/hurtbox/hurtbox.tscn" id="1_h8r36"]
-[ext_resource type="Script" uid="uid://c10dvkofnrg4d" path="res://Props/Dummies/dummy.gd" id="1_jhxlw"]
-[ext_resource type="Texture2D" uid="uid://bayex4hmsjn50" path="res://Props/Dummies/SandbagPlaceholder.png" id="2_jhxlw"]
+[ext_resource type="Script" uid="uid://c10dvkofnrg4d" path="res://Enemies/Dummy/dummy.gd" id="1_jhxlw"]
+[ext_resource type="Texture2D" uid="uid://bayex4hmsjn50" path="res://Enemies/Dummy/SandbagPlaceholder.png" id="2_jhxlw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h8r36"]
 size = Vector2(24, 54)

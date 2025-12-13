@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cvudu1fei0nd4" path="res://Player/player.tscn" id="1_rupst"]
 [ext_resource type="PackedScene" uid="uid://bnhmglu1jvy07" path="res://Tilemaps/dark_forest.tscn" id="2_wt17y"]
-[ext_resource type="PackedScene" uid="uid://dh500e5g6krvr" path="res://Props/Dummies/dummy.tscn" id="3_m8u5f"]
+[ext_resource type="PackedScene" uid="uid://dh500e5g6krvr" path="res://Enemies/Dummy/dummy.tscn" id="3_m8u5f"]
 
 [node name="Playground" type="Node2D"]
 y_sort_enabled = true
