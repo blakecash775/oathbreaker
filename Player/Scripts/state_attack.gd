@@ -12,7 +12,7 @@ func Enter() -> void:
 	player.UpdateAnimation("attack")
 	attacking = true
 	# Bad substitute for no attack animation, use the commented code under it once you have a real one 
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.2).timeout
 	EndAttack()
 	# animation_player.animation_finished.connect(EndAttack)
 	pass

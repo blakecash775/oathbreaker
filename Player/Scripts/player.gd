@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction: Vector2 = Vector2.DOWN
+var _placeholder_tween: Tween
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
@@ -36,20 +37,23 @@ func SetDirection() -> bool:
 	return true
 
 func UpdateAnimation(state: String) -> void:
-	
-	# Bad workaround to have feedback for player attack, can remove when you add a real one
+	# Kill any existing placeholder tween and reset sprite
+	if _placeholder_tween:
+		_placeholder_tween.kill()
+	sprite.position = Vector2.ZERO
+	sprite.scale = Vector2(2,2)
+
 	if state == 'attack':
-		animation_player.speed_scale = 200 # idk LOL
-		pass
-	# Bad workaround to have some feedback for walking, can remove when you add a real walk anim
+		# Lunge toward facing direction, then snap back
+		_placeholder_tween = create_tween()
+		_placeholder_tween.tween_property(sprite, "position", cardinal_direction * 8, 0.1)
+		_placeholder_tween.tween_property(sprite, "position", Vector2.ZERO, 0.1)
 	elif state == 'walk':
-		animation_player.speed_scale = 3.5
+		animation_player.speed_scale = 4
 	else:
 		animation_player.speed_scale = 1
-	
+
 	animation_player.play('idle' + "_" + AnimDirection())
-	
-	pass
 	
 func AnimDirection() -> String:
 	if cardinal_direction == Vector2.DOWN:
