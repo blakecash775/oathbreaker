@@ -1,23 +1,19 @@
 class_name Enemy extends Node2D
 @onready var BaseNode: Enemy = $"."
 
-var knockback: int = 0
+var knockback: float = 0
+var knockback_direction: Vector2 = Vector2.ZERO
 
 func _ready():
 	$Hurtbox.Damaged.connect(TakeDamage)
-	pass
-	
+
 func _physics_process(_delta: float) -> void:
-	BaseNode.velocity = (Vector2.UP * knockback)
+	BaseNode.velocity = knockback_direction * knockback
 	BaseNode.move_and_slide()
 	if knockback > 0:
-		knockback = knockback - randf_range(0.1, 2);
+		knockback = knockback - randf_range(0.1, 2)
 
-func TakeDamage(damage: int):
-	# You'll eventually want to make this conditional on some sort of HP
-	# Take knockback
-	knockback = knockback + 200
+func TakeDamage(_damage: int, source_position: Vector2):
+	knockback_direction = (global_position - source_position).normalized()
+	knockback = knockback + 100
 	BaseNode.move_and_slide()
-	
-	# queue_free()
-	pass
