@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_loo6i"]
 
-[node name="Dummy" type="Node2D"]
+[node name="Mulcher" type="CharacterBody2D"]
 script = ExtResource("1_d3gyp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
