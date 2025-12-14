@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5ayumc4ln2ft"]
+
+[ext_resource type="Script" uid="uid://c10dvkofnrg4d" path="res://Enemies/utils/enemy.gd" id="1_d3gyp"]
+[ext_resource type="Texture2D" uid="uid://bbi5jg07gsysi" path="res://Enemies/Mulcher/Mulcher.png" id="2_o41rw"]
+[ext_resource type="PackedScene" uid="uid://dy4kxtfcn4i7q" path="res://UtilNodes/hurtbox/hurtbox.tscn" id="3_fyorg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_loo6i"]
+
+[node name="Dummy" type="Node2D"]
+script = ExtResource("1_d3gyp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -20)
+texture = ExtResource("2_o41rw")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_fyorg")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -19)
+shape = SubResource("CapsuleShape2D_loo6i")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -24)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_loo6i")
