@@ -8,7 +8,7 @@ func _ready():
 	pass
 	
 func _physics_process(_delta: float) -> void:
-	BaseNode.velocity = (BaseNode.velocity * knockback)
+	BaseNode.velocity = (Vector2.UP * knockback)
 	BaseNode.move_and_slide()
 	if knockback > 0:
 		knockback = knockback - randf_range(0.1, 2);
