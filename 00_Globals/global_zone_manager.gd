@@ -16,14 +16,14 @@ func load_new_zone(
 	target_transition = _target_transition
 	position_offset = _position_offset
 	
-	await get_tree().process_frame # Zone Transition
+	await Scenetransition.fade_out()
 	
 	zone_load_started.emit()
 	
 	await get_tree().process_frame
 	get_tree().change_scene_to_file(level_path)
 
-	await get_tree().process_frame # Zone Transition
+	Scenetransition.fade_in()
 	get_tree().paused = false
 	
 	await get_tree().process_frame

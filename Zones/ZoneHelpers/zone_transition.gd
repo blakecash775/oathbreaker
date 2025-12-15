@@ -32,7 +32,7 @@ func _ready() -> void:
 	
 func _player_entered(_p: Node2D) -> void:
 	ZoneManager.load_new_zone(zone, target_transition_area, Vector2.ZERO)
-	pass
+	
 
 func _update_area() -> void:
 	var new_rect: Vector2 = Vector2(32, 32) # Need to change if I change tile size
