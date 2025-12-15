@@ -6,13 +6,14 @@ class_name HudClass extends CanvasLayer
 const JAILER_ONE = preload("uid://ds2n42y8kn0y8")
 const JAILER_TWO = preload("uid://36jojg0svt4n")
 
-# This will need some extension for multi-step dialogue
 signal ShowCaption(text: String, character: String)
 
 func _ready():
 	ShowCaption.connect(RenderCaption)
 	pass
 
+# Support for dialogue 'chances', where it only plays sometimes
+# This will need some extension for multi-step dialogue - Scripts?
 func RenderCaption(text: String, character: String = 'none') -> void:
 	label.text = text
 	assignSprite(character)

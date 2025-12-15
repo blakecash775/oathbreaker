@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds2n42y8kn0y8"
-path="res://.godot/imported/JailerOne.png-52e17fbc4974d95de2934811888f57fd.ctex"
+uid="uid://36jojg0svt4n"
+path="res://.godot/imported/JailerTwo.png-6316a2447077371e5ba3b52153539c2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DialogueSprites/JailerOne.png"
-dest_files=["res://.godot/imported/JailerOne.png-52e17fbc4974d95de2934811888f57fd.ctex"]
+source_file="res://Interface/DialogueSprites/JailerTwo.png"
+dest_files=["res://.godot/imported/JailerTwo.png-6316a2447077371e5ba3b52153539c2e.ctex"]
 
 [params]
 
