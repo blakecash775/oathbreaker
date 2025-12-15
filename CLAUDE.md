@@ -1,40 +1,48 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## Project Overview
 
-Oathbreaker is a story-driven action roguelike game built with Godot 4.5 (Mobile renderer). The project is in early development with placeholder systems, but intends to have a strong focus on high mobity, momentum based combat.
+Oathbreaker is a story-focused action roguelike built with Godot 4.5 (Mobile renderer). The game focuses on high-mobility, momentum-based combat. Currently in early development.
 
 ## Running the Game
 
-The main scene for this phase of testing is `playground.tscn`.
+Main scene: `Zones/prison.tscn`
 
-## Architecture
+## Project Structure
+
+- **00_Globals/** - Autoloaded managers (ZoneManager, PlayerManager)
+- **Player/** - Player character, state machine, sprites
+- **Zones/** - Level scenes and zone helper components
+- **Enemies/** - Enemy types (Dummy, Mulcher) and base enemy class
+- **Interface/** - HUD, dialogue captions, scene transitions
+- **UtilNodes/** - Reusable hitbox/hurtbox components
+- **Tilemaps/** - Level geometry and tilesets
+
+## Key Systems
+
+### Autoloads
+- **ZoneManager** - Orchestrates scene transitions with fade effects
+- **PlayerManager** - Manages persistent player instance across zones
+- **Hud** - Persistent UI layer with dialogue caption system
+- **Scenetransition** - Fade in/out effects
 
 ### Player State Machine
+Located in `Player/Scripts/`. States extend `state.gd` base class with shared static player reference. States implement `Enter()`, `Exit()`, `Process()`, `Physics()`, `HandleInput()` and return new states to trigger transitions (or null to stay).
 
-The player uses a state machine pattern located in `Player/Scripts/`:
+### Combat
+Signal-based system using HitBox/HurtBox components in `UtilNodes/`. HurtBox emits `Damaged` signal when hit.
 
-- **state.gd**: Base `State` class that all states extend. Has a static `player` reference shared across states. States implement `Enter()`, `Exit()`, `Process()`, `Physics()`, and `HandleInput()` methods.
-- **player_state_machine.gd**: `PlayerStateMachine` manages state transitions. Calls into current state for process/physics/input handling.
-- **state_idle.gd**, **state_walk.gd**, **state_attack.gd**: Concrete state implementations.
+### Zone Transitions
+Player persists across scenes via PlayerManager. Zones reparent the player on load. ZoneTransition triggers handle moving between areas.
 
-State transitions return the new `State` (or `null` to stay). States reference siblings via `@onready var` with paths like `$"../Walk"`.
+## Input Actions
 
-### Player (player.gd)
+- **Movement:** WASD/Arrows/Gamepad (up, down, left, right)
+- **Attack:** Left Mouse/Gamepad B
 
-`Player` extends `CharacterBody2D`. Key properties:
-- `cardinal_direction`: Current facing direction (Vector2)
-- `direction`: Normalized input direction
-
-`SetDirection()` updates cardinal direction from input. `UpdateAnimation()` plays animations based on state and direction.
-
-### Input Actions
-
-Defined in `project.godot`: `up`, `down`, `left`, `right` (WASD/arrows/gamepad), `attack` (left click/gamepad B).
-
-### Physics Layers
+## Physics Layers
 
 - Layer 1: Player
+- Layer 2: PlayerHurt
 - Layer 5: Walls
+- Layer 9: Enemy
