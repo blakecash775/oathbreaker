@@ -1,7 +1,8 @@
 class_name Player extends CharacterBody2D
 
 var cardinal_direction : Vector2 = Vector2.DOWN
-var direction: Vector2 = Vector2.DOWN
+var direction: Vector2 = Vector2.ZERO  # Movement input (WASD)
+var aim_direction: Vector2 = Vector2.DOWN  # Direction toward mouse cursor
 # All tween stuff here is to substitute for missing animations, you can get rid of it when you add a real animation
 var _placeholder_tween: Tween
 
@@ -22,24 +23,31 @@ func _process(_delta: float) -> void:
 		Input.get_axis("up", "down")
 	).normalized()
 
+	# Calculate aim direction from player to mouse cursor
+	var mouse_pos = get_global_mouse_position()
+	var aim_vec = mouse_pos - global_position
+	if aim_vec.length() > 0:
+		aim_direction = aim_vec.normalized()
+
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func SetDirection() -> bool:
+	# Update cardinal direction based on aim (mouse) direction
 	var new_dir: Vector2 = cardinal_direction
-	if direction == Vector2.ZERO:
-		return false
-	if direction.y == 0:
-		new_dir = Vector2.LEFT if direction.x < 0 else Vector2.RIGHT
-	elif direction.x == 0:
-		new_dir = Vector2.UP if direction.y < 0 else Vector2.DOWN
-		
+
+	# Determine cardinal direction from aim - prioritize horizontal/vertical based on which is larger
+	if abs(aim_direction.x) > abs(aim_direction.y):
+		new_dir = Vector2.LEFT if aim_direction.x < 0 else Vector2.RIGHT
+	else:
+		new_dir = Vector2.UP if aim_direction.y < 0 else Vector2.DOWN
+
 	if new_dir == cardinal_direction:
 		return false
 	cardinal_direction = new_dir
-	
+
 	DirectionChanged.emit(new_dir)
-	
+
 	return true
 
 func UpdateAnimation(state: String) -> void:

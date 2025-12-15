@@ -16,9 +16,13 @@ func Exit() -> void:
 # What happens during the _process update in this State?
 func Process(_delta: float) -> State:
 	if player.direction != Vector2.ZERO:
-			return walk
+		return walk
 	player.velocity = Vector2.ZERO
-	
+
+	# Track mouse cursor while idle
+	if player.SetDirection():
+		player.UpdateAnimation("idle")
+
 	return null
 
 # What happens during the _physics_process update in this State?

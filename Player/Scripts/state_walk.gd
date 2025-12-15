@@ -22,15 +22,16 @@ func Process(_delta: float) -> State:
 	if player.direction == Vector2.ZERO:
 		move_speed = 100
 		return idle
-		
+
 	if move_speed < max_speed:
 		move_speed = move_speed + acceleration
-	
+
 	player.velocity = player.direction * move_speed
 
+	# Always update aim direction to track mouse
 	if player.SetDirection():
 		player.UpdateAnimation("walk")
-	
+
 	return null
 
 # What happens during the _physics_process update in this State?
