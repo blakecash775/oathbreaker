@@ -7,4 +7,5 @@ func _ready():
 
 func AreaEntered(a: Area2D) -> void:
 	if a is HurtBox:
-		a.TakeDamage(damage, global_position)
+		print('Yes')
+		a.TakeDamage(damage)

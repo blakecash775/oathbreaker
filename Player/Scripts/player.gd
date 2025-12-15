@@ -14,6 +14,7 @@ var _placeholder_tween: Tween
 signal DirectionChanged(new_direction: Vector2)
 
 func _ready() -> void:
+	PlayerManager.player = self
 	state_machine.Initialize(self)
 	pass
 

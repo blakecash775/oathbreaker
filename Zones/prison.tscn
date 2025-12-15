@@ -8,6 +8,9 @@
 [node name="Prison" type="Node2D"]
 script = ExtResource("1_ggtou")
 
+[node name="Playerspawn" parent="." instance=ExtResource("2_bivxn")]
+position = Vector2(-116, -106)
+
 [node name="Tiles" type="Node2D" parent="."]
 
 [node name="DarkForest" parent="Tiles" instance=ExtResource("2_ggtou")]
@@ -18,9 +21,6 @@ tile_map_data = PackedByteArray("AAD1//f/AAAAAEIAAAD1//j/AAAAAEMAAAD2//f/AAABAEI
 
 [node name="DarkForest3" parent="Tiles" instance=ExtResource("2_ggtou")]
 tile_map_data = PackedByteArray("AAD1/wUAAAAFAEoAAAAQAAUAAAAEAEUAAAD1//j/AAAFAEYAAAD1//f/AAAFAEYAAAA=")
-
-[node name="Playerspawn" parent="." instance=ExtResource("2_bivxn")]
-position = Vector2(-116, -106)
 
 [node name="ZoneTransition" parent="." instance=ExtResource("4_myuaf")]
 position = Vector2(399, -327)

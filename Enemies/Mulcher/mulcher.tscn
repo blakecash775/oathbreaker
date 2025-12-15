@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5ayumc4ln2ft"]
+[gd_scene load_steps=8 format=3 uid="uid://b5ayumc4ln2ft"]
 
 [ext_resource type="Script" uid="uid://c10dvkofnrg4d" path="res://Enemies/utils/enemy.gd" id="1_d3gyp"]
 [ext_resource type="Texture2D" uid="uid://bbi5jg07gsysi" path="res://Enemies/Mulcher/Mulcher.png" id="2_o41rw"]
 [ext_resource type="PackedScene" uid="uid://dy4kxtfcn4i7q" path="res://UtilNodes/hurtbox/hurtbox.tscn" id="3_fyorg"]
+[ext_resource type="Script" uid="uid://dcdy2elhbxras" path="res://Enemies/utils/enemy_state_machine.gd" id="4_loo6i"]
+[ext_resource type="Script" uid="uid://coexnikw8raa" path="res://Enemies/utils/states/enemy_state_idle.gd" id="5_fyuhi"]
+[ext_resource type="Script" uid="uid://dgnqrh2whvgp0" path="res://Enemies/utils/states/enemy_state_wander.gd" id="6_po0yw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_loo6i"]
 
@@ -23,3 +26,14 @@ shape = SubResource("CapsuleShape2D_loo6i")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -19)
 shape = SubResource("CapsuleShape2D_loo6i")
+
+[node name="EnemyStateMachine" type="Node2D" parent="."]
+script = ExtResource("4_loo6i")
+
+[node name="Idle" type="Node2D" parent="EnemyStateMachine" node_paths=PackedStringArray("after_idle_state")]
+script = ExtResource("5_fyuhi")
+after_idle_state = NodePath("../Wander")
+
+[node name="Wander" type="Node2D" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_po0yw")
+next_state = NodePath("../Idle")
