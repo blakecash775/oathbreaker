@@ -17,4 +17,4 @@ func TakeDamage(_damage: int, source_position: Vector2):
 	knockback_direction = (global_position - source_position).normalized()
 	knockback = knockback + 100 # Base on damage, or some knockback mult based on attack
 	BaseNode.move_and_slide()
-	Hud.ShowCaption.emit('You beat his ass bro')
+	Hud.ShowCaption.emit('You beat his ass bro', "Jailer One")
