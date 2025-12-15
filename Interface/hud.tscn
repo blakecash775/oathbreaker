@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpw3so62wcr8t"]
+
+[ext_resource type="Texture2D" uid="uid://ds2n42y8kn0y8" path="res://DialogueSprites/JailerOne.png" id="1_jq685"]
+
+[node name="Hud" type="CanvasLayer"]
+
+[node name="TopCaption" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="TopCaption"]
+position = Vector2(32, 32)
+texture = ExtResource("1_jq685")
+
+[node name="Label" type="Label" parent="TopCaption"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 17.0
+offset_right = 193.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 12
+text = "This is placeholder text"

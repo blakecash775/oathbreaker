@@ -11,9 +11,9 @@ func _physics_process(_delta: float) -> void:
 	BaseNode.velocity = knockback_direction * knockback
 	BaseNode.move_and_slide()
 	if knockback > 0:
-		knockback = knockback - randf_range(0.1, 2)
+		knockback = knockback - randf_range(0.01, 2)
 
 func TakeDamage(_damage: int, source_position: Vector2):
 	knockback_direction = (global_position - source_position).normalized()
-	knockback = knockback + 100
+	knockback = knockback + 100 # Base on damage, or some knockback mult based on attack
 	BaseNode.move_and_slide()
