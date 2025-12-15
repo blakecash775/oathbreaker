@@ -28,3 +28,5 @@ func load_new_zone(
 	
 	await get_tree().process_frame
 	zone_loaded.emit()
+	
+	Hud.ShowCaption.emit("He doesn't know where he is.", "Jailer One")

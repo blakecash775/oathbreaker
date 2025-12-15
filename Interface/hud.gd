@@ -34,7 +34,7 @@ func RenderCaption(text: String, character: String = 'none') -> void:
 	if content_changed:
 		caption_container.modulate.a = 0.0
 		_caption_tween.tween_property(caption_container, "modulate:a", 1.0, 0.1) # Tweak 0.1 to adjust the fade speed
-	_caption_tween.tween_interval(2.0) # Dynamic based on length? Give characters speaking speeds?
+	_caption_tween.tween_interval(4.0) # Dynamic based on length? Give characters speaking speeds?
 	_caption_tween.tween_property(caption_container, "modulate:a", 0.0, 0.1)
 	_caption_tween.tween_callback(_clear_caption)
 

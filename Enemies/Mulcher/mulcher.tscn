@@ -7,6 +7,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_loo6i"]
 
 [node name="Mulcher" type="CharacterBody2D"]
+collision_mask = 17
 script = ExtResource("1_d3gyp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,11 +20,6 @@ texture = ExtResource("2_o41rw")
 position = Vector2(0, -19)
 shape = SubResource("CapsuleShape2D_loo6i")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(0, -24)
-collision_layer = 16
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -19)
 shape = SubResource("CapsuleShape2D_loo6i")
