@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpw3so62wcr8t"]
+[gd_scene load_steps=4 format=3 uid="uid://bpw3so62wcr8t"]
 
-[ext_resource type="Script" uid="uid://bmrps8jm5vy4j" path="res://Interface/hud.gd" id="1_28tah"]
+[ext_resource type="Script" uid="uid://cxqxhxt63l2fw" path="res://Interface/hud.gd" id="1_28tah"]
 [ext_resource type="Texture2D" uid="uid://ds2n42y8kn0y8" path="res://DialogueSprites/JailerOne.png" id="1_jq685"]
+[ext_resource type="Script" uid="uid://dm40lgg42piy8" path="res://Interface/topcaption.gd" id="2_mb2mj"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_28tah")
@@ -11,6 +12,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("2_mb2mj")
 
 [node name="Sprite2D" type="Sprite2D" parent="TopCaption"]
 position = Vector2(32, 32)
@@ -23,4 +25,4 @@ offset_top = 17.0
 offset_right = 193.0
 offset_bottom = 40.0
 theme_override_font_sizes/font_size = 12
-metadata/_edit_use_anchors_ = true
+text = "This is placeholder text"
