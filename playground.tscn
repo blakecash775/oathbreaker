@@ -1,15 +1,14 @@
-[gd_scene load_steps=5 format=4 uid="uid://dxvhpjk4f7ch6"]
+[gd_scene load_steps=6 format=4 uid="uid://dxvhpjk4f7ch6"]
 
-[ext_resource type="PackedScene" uid="uid://cvudu1fei0nd4" path="res://Player/player.tscn" id="1_rupst"]
+[ext_resource type="Script" uid="uid://b1vc62xth8ftn" path="res://Zones/ZoneHelpers/zone.gd" id="1_is3ju"]
 [ext_resource type="PackedScene" uid="uid://bnhmglu1jvy07" path="res://Tilemaps/dark_forest.tscn" id="2_wt17y"]
 [ext_resource type="PackedScene" uid="uid://dh500e5g6krvr" path="res://Enemies/Dummy/dummy.tscn" id="3_m8u5f"]
 [ext_resource type="PackedScene" uid="uid://b5ayumc4ln2ft" path="res://Enemies/Mulcher/mulcher.tscn" id="4_is3ju"]
+[ext_resource type="PackedScene" uid="uid://cdh40t5nr2012" path="res://Zones/ZoneHelpers/playerspawn.tscn" id="5_o00ia"]
 
 [node name="Playground" type="Node2D"]
 y_sort_enabled = true
-
-[node name="Player" parent="." instance=ExtResource("1_rupst")]
-position = Vector2(92, 58)
+script = ExtResource("1_is3ju")
 
 [node name="DarkForestLayer1" parent="." instance=ExtResource("2_wt17y")]
 position = Vector2(-5, -2)
@@ -32,3 +31,5 @@ position = Vector2(331, 10)
 
 [node name="Mulcher3" parent="." instance=ExtResource("4_is3ju")]
 position = Vector2(-74, 190)
+
+[node name="Playerspawn" parent="." instance=ExtResource("5_o00ia")]

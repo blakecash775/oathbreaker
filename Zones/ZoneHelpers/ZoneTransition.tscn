@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://0e5hhu8s5fg1"]
+
+[ext_resource type="Script" uid="uid://d1lt874lu1lcu" path="res://Zones/ZoneHelpers/zone_transition.gd" id="1_hlpgr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4xvc"]
+resource_local_to_scene = true
+size = Vector2(32, 32)
+
+[node name="ZoneTransition" type="Area2D"]
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_hlpgr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_q4xvc")
+debug_color = Color(0.7914825, 0.08701495, 1, 0.41960785)

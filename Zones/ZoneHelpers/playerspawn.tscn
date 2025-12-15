@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdh40t5nr2012"]
+
+[ext_resource type="Script" uid="uid://52ccse2uoyt0" path="res://Zones/ZoneHelpers/player_spawn.gd" id="1_mbvl7"]
+[ext_resource type="Texture2D" uid="uid://ctra6xb7fpc4r" path="res://Player/Sprites/Breaker1-Sheet.png" id="1_ux5j1"]
+
+[node name="Playerspawn" type="Node2D"]
+script = ExtResource("1_mbvl7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(2.7639198, 18.892157, 0, 0.72156864)
+position = Vector2(0, -30)
+scale = Vector2(2, 2)
+texture = ExtResource("1_ux5j1")
+hframes = 8

@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="oathbreaker"
-run/main_scene="res://playground.tscn"
+run/main_scene="uid://dxudg8tk7wsj5"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
+ZoneManager="*res://00_Globals/global_zone_manager.gd"
 Hud="*res://Interface/hud.tscn"
+PlayerManager="*res://00_Globals/global_player_manager.gd"
 
 [display]
 
