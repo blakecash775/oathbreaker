@@ -4,7 +4,6 @@ var is_paused: bool = false
 
 func _ready() -> void:
 	hide_pause()
-	pass
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):

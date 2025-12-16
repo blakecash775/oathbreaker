@@ -9,17 +9,17 @@ func init()-> void:
 	pass
 	
 # What happens when the enemy enters this state?
-func Enter() -> void:
+func enter() -> void:
 	pass
 
 # What happens when the enemy exits this state?
-func Exit() -> void:
+func exit() -> void:
 	pass
 
 # What happens during the _process update in this State?
-func Process(_delta: float) -> EnemyState:
+func process(_delta: float) -> EnemyState:
 	return null
 
 # What happens during the _physics_process update in this State?
-func Physics(_delta: float) -> EnemyState:
+func physics(_delta: float) -> EnemyState:
 	return null

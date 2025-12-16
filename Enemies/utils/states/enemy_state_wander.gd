@@ -17,25 +17,24 @@ func init()-> void:
 	pass
 	
 # What happens when the enemy enters this state?
-func Enter() -> void:
+func enter() -> void:
 	_timer = randi_range(state_cycles_min, state_cycles_max) * state_animation_duration
 	var rand = randi_range(0, 3)
 	_direction = enemy.DIR_4[rand]
 	enemy.velocity = _direction * walk_speed
 	enemy.set_direction(_direction)
-	pass
 
 # What happens when the enemy exits this state?
-func Exit() -> void:
+func exit() -> void:
 	pass
 
 # What happens during the _process update in this State?
-func Process(_delta: float) -> EnemyState:
+func process(_delta: float) -> EnemyState:
 	_timer -= _delta
 	if _timer < 0:
 		return next_state
 	return null
 
 # What happens during the _physics_process update in this State?
-func Physics(_delta: float) -> EnemyState:
+func physics(_delta: float) -> EnemyState:
 	return null

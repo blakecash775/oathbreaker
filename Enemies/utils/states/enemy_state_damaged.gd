@@ -14,35 +14,32 @@ var _animation_finished: bool
 # What happens when we initialize this state?
 func init()-> void:
 	enemy.enemy_damaged.connect(_on_enemy_damaged)
-	pass
 	
 # What happens when the enemy enters this state?
-func Enter() -> void:
+func enter() -> void:
 	_animation_finished = false
-	
+
 	_direction = enemy.global_position.direction_to(_damage_position)
-	
+
 	enemy.velocity = _direction * -knockback_speed
 	enemy.set_direction(_direction)
 	enemy.set_animation(anim_name) # Animation only plays if it's fully finished - What to do when multiple attacks occur before animation ends?
-	
+
 	enemy.animation_player.animation_finished.connect(_on_animation_finished)
-	pass
 
 # What happens when the enemy exits this state?
-func Exit() -> void:
+func exit() -> void:
 	enemy.animation_player.animation_finished.disconnect(_on_animation_finished)
-	pass
 
 # What happens during the _process update in this State?
-func Process(_delta: float) -> EnemyState:
-	if _animation_finished == true: # Animation should eventually be based on stun, not the other way around 
+func process(_delta: float) -> EnemyState:
+	if _animation_finished == true: # Animation should eventually be based on stun, not the other way around
 		return next_state
 	enemy.velocity -= enemy.velocity * decelerate_speed * _delta
 	return null
 
 # What happens during the _physics_process update in this State?
-func Physics(_delta: float) -> EnemyState:
+func physics(_delta: float) -> EnemyState:
 	return null
 	
 func _on_enemy_damaged(hit_box: HitBox) -> void:

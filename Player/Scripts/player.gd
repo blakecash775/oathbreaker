@@ -12,7 +12,7 @@ var _placeholder_tween: Tween
 @onready var walk: State_Walk = $StateMachine/Walk
 @onready var hurtbox: HurtBox = $Hurtbox
 
-signal DirectionChanged(new_direction: Vector2) #direction_changed
+signal direction_changed(new_direction: Vector2)
 signal player_damaged(hurt_box: HurtBox)
 
 var invulnerable: bool = false
@@ -21,10 +21,9 @@ var max_hp: int = 6
 
 func _ready() -> void:
 	PlayerManager.player = self
-	state_machine.Initialize(self)
-	hurtbox.Damaged.connect(_take_damage)
+	state_machine.initialize(self)
+	hurtbox.damaged.connect(_take_damage)
 	update_hp(max_hp) # Every time he gets made he gets full hp, maybe change?
-	pass
 
 func _process(_delta: float) -> void:
 	direction = Vector2(
@@ -41,7 +40,7 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
-func SetDirection() -> bool:
+func set_direction() -> bool:
 	# Update cardinal direction based on aim (mouse) direction
 	var new_dir: Vector2 = cardinal_direction
 
@@ -55,11 +54,11 @@ func SetDirection() -> bool:
 		return false
 	cardinal_direction = new_dir
 
-	DirectionChanged.emit(new_dir)
+	direction_changed.emit(new_dir)
 
 	return true
 
-func UpdateAnimation(state: String) -> void:
+func update_animation(state: String) -> void:
 	# Kill any existing placeholder tween and reset sprite
 	if _placeholder_tween:
 		_placeholder_tween.kill()
@@ -72,17 +71,17 @@ func UpdateAnimation(state: String) -> void:
 		_placeholder_tween = create_tween()
 		_placeholder_tween.tween_property(sprite, "position", cardinal_direction * 8, 0.1)
 		_placeholder_tween.tween_property(sprite, "position", Vector2.ZERO, 0.1)
-		animation_player.play("idle" + "_" + AnimDirection())
+		animation_player.play("idle" + "_" + anim_direction())
 	elif state == 'walk':
 		animation_player.speed_scale = 4 + (walk.move_speed / 100)
-		animation_player.play("idle" + "_" + AnimDirection())
+		animation_player.play("idle" + "_" + anim_direction())
 	else:
-		animation_player.play(state + "_" + AnimDirection())
+		animation_player.play(state + "_" + anim_direction())
 		animation_player.speed_scale = 1
 
 
 	
-func AnimDirection() -> String:
+func anim_direction() -> String:
 	if cardinal_direction == Vector2.DOWN:
 		return "down"
 	elif cardinal_direction == Vector2.UP:
@@ -103,13 +102,11 @@ func _take_damage(hit_box: HitBox) -> void:
 		# Placeholder - Add Death Handling
 		player_damaged.emit(hit_box)
 		update_hp(max_hp)
-		Hud.ShowCaption.emit("If only it were so easy.", "Jailer Two")
-	pass
+		Hud.show_caption.emit("If only it were so easy.", "Jailer Two")
 
 func update_hp(delta: int) -> void:
 	hp = clampi(hp + delta, 0, max_hp)
 	Hud.update_hp_display(hp, max_hp)
-	pass
 
 func make_invulnerable(_duration: float = 0.5) -> void:
 	invulnerable = true
@@ -119,4 +116,3 @@ func make_invulnerable(_duration: float = 0.5) -> void:
 	
 	invulnerable = false
 	hurtbox.monitoring = true
-	pass

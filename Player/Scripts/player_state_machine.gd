@@ -6,22 +6,18 @@ var current_state: State
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_DISABLED
-	pass
 
 func _process(delta):
-	ChangeState(current_state.Process(delta))
-	pass
-	
+	change_state(current_state.process(delta))
+
 func _physics_process(delta):
-	ChangeState(current_state.Physics(delta))
-	pass
-	
+	change_state(current_state.physics(delta))
+
 func _unhandled_input(event: InputEvent) -> void:
-	ChangeState(current_state.HandleInput(event))
-	pass
+	change_state(current_state.handle_input(event))
 	
 
-func Initialize(_player: Player) -> void:
+func initialize(_player: Player) -> void:
 	states = []
 	
 	for c in get_children():
@@ -37,16 +33,16 @@ func Initialize(_player: Player) -> void:
 	for state in states:
 		state.init()
 	
-	ChangeState(states[0])
+	change_state(states[0])
 	process_mode = Node.PROCESS_MODE_INHERIT
 
-func ChangeState(new_state: State) -> void:
+func change_state(new_state: State) -> void:
 	if new_state == null || new_state == current_state:
 		return
-	
+
 	if current_state:
-		current_state.Exit()
-	
+		current_state.exit()
+
 	prev_state = current_state
 	current_state = new_state
-	current_state.Enter()
+	current_state.enter()

@@ -5,28 +5,29 @@ class_name HudClass extends CanvasLayer
 @onready var sprite: Sprite2D = $TopCaption/Sprite2D
 @onready var hp_rect: ColorRect = $Control/ColorRect
 
-@export var HpBarDefaultLength = 160
+@export var hp_bar_default_length = 160
 
 var _caption_tween: Tween
 var _current_text: String
 var _current_character: String
 
-const JAILER_ONE = preload("uid://ds2n42y8kn0y8")
-const JAILER_TWO = preload("uid://36jojg0svt4n")
+const PORTRAITS = {
+	"Jailer One": preload("uid://ds2n42y8kn0y8"),
+	"Jailer Two": preload("uid://36jojg0svt4n"),
+}
 
-signal ShowCaption(text: String, character: String)
+signal show_caption(text: String, character: String)
 
 func _ready():
-	ShowCaption.connect(RenderCaption)
-	pass
+	show_caption.connect(render_caption)
 
-func update_hp_display(playerHp: int, playerMaxHp: int) -> void:
-	var hpPercent = float(playerHp) / float(playerMaxHp)
-	hp_rect.size = Vector2(HpBarDefaultLength * hpPercent , hp_rect.size.y)
+func update_hp_display(player_hp: int, player_max_hp: int) -> void:
+	var hp_percent = float(player_hp) / float(player_max_hp)
+	hp_rect.size = Vector2(hp_bar_default_length * hp_percent, hp_rect.size.y)
 
 # Support for dialogue 'chances', where it only plays sometimes
 # This will need some extension for multi-step dialogue - Scripts?
-func RenderCaption(text: String, character: String = 'none') -> void:
+func render_caption(text: String, character: String = 'none') -> void:
 	if _caption_tween:
 		_caption_tween.kill()
 
@@ -35,7 +36,7 @@ func RenderCaption(text: String, character: String = 'none') -> void:
 	_current_character = character
 
 	label.text = text
-	assignSprite(character)
+	assign_sprite(character)
 
 	_caption_tween = create_tween()
 	if content_changed:
@@ -51,8 +52,5 @@ func _clear_caption() -> void:
 	_current_text = ''
 	_current_character = ''
 
-func assignSprite(character: String) -> void:
-	if (character == 'Jailer One'):
-		sprite.texture = JAILER_ONE
-	elif (character == 'Jailer Two'):
-		sprite.texture = JAILER_TWO
+func assign_sprite(character: String) -> void:
+	sprite.texture = PORTRAITS.get(character)

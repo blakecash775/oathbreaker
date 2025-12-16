@@ -13,16 +13,15 @@ func init() -> void:
 	pass
 
 # What happens when the player enters this state?
-func Enter() -> void:
-	player.UpdateAnimation("walk")
-	pass
+func enter() -> void:
+	player.update_animation("walk")
 
 # What happens when the player exits this state?
-func Exit() -> void:
+func exit() -> void:
 	pass
 
 # What happens during the _process update in this State?
-func Process(_delta: float) -> State:
+func process(_delta: float) -> State:
 	if player.direction == Vector2.ZERO:
 		move_speed = 100
 		return idle
@@ -33,17 +32,17 @@ func Process(_delta: float) -> State:
 	player.velocity = player.direction * move_speed
 
 	# Always update aim direction to track mouse
-	if player.SetDirection():
-		player.UpdateAnimation("walk")
+	if player.set_direction():
+		player.update_animation("walk")
 
 	return null
 
 # What happens during the _physics_process update in this State?
-func Physics(_delta: float) -> State:
+func physics(_delta: float) -> State:
 	return null
 
 # What happens with input events during this State?
-func HandleInput(_event: InputEvent) -> State:
+func handle_input(_event: InputEvent) -> State:
 	if _event.is_action_pressed("attack"):
 		return attack
 	return null

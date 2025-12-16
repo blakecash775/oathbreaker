@@ -20,7 +20,7 @@ var player: Player
 func _ready():
 	state_machine.initialize(self)
 	player = PlayerManager.player
-	hurtbox.Damaged.connect(_take_damage)
+	hurtbox.damaged.connect(_take_damage)
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
