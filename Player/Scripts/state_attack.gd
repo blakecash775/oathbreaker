@@ -7,8 +7,11 @@ var attacking : bool = false
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 @onready var hitbox: HitBox = $"../../Interactions/Hitbox"
 
+# What happens when we initialize this state?
+func init() -> void:
+	pass
 
-## What happens when the player enters this state?
+# What happens when the player enters this state?
 func Enter() -> void:
 	player.UpdateAnimation("attack")
 	attacking = true

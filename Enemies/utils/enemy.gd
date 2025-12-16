@@ -50,6 +50,6 @@ func set_animation(animation: String)-> void:
 func _take_damage(hit_box: HitBox) -> void:
 	hp -= hit_box.damage
 	if hp > 0:
-		enemy_damaged.emit()
+		enemy_damaged.emit(hit_box)
 	else:
-		enemy_dying.emit()
+		enemy_dying.emit(hit_box)

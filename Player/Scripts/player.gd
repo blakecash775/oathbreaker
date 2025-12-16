@@ -10,12 +10,20 @@ var _placeholder_tween: Tween
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine= $StateMachine
 @onready var walk: State_Walk = $StateMachine/Walk
+@onready var hurtbox: HurtBox = $Hurtbox
 
-signal DirectionChanged(new_direction: Vector2)
+signal DirectionChanged(new_direction: Vector2) #direction_changed
+signal player_damaged(hurt_box: HurtBox)
+
+var invulnerable: bool = false
+var hp: int = 6 #export?
+var max_hp: int = 6
 
 func _ready() -> void:
 	PlayerManager.player = self
 	state_machine.Initialize(self)
+	hurtbox.Damaged.connect(_take_damage)
+	update_hp(max_hp) # Every time he gets made he gets full hp, maybe change?
 	pass
 
 func _process(_delta: float) -> void:
@@ -58,17 +66,21 @@ func UpdateAnimation(state: String) -> void:
 	sprite.position = Vector2.ZERO
 	sprite.scale = Vector2(2,2)
 
+	# Placeholder for attack and walk, replace with real animations
 	if state == 'attack':
 		# Lunge toward facing direction, then snap back
 		_placeholder_tween = create_tween()
 		_placeholder_tween.tween_property(sprite, "position", cardinal_direction * 8, 0.1)
 		_placeholder_tween.tween_property(sprite, "position", Vector2.ZERO, 0.1)
+		animation_player.play("idle" + "_" + AnimDirection())
 	elif state == 'walk':
 		animation_player.speed_scale = 4 + (walk.move_speed / 100)
+		animation_player.play("idle" + "_" + AnimDirection())
 	else:
+		animation_player.play(state + "_" + AnimDirection())
 		animation_player.speed_scale = 1
 
-	animation_player.play('idle' + "_" + AnimDirection())
+
 	
 func AnimDirection() -> String:
 	if cardinal_direction == Vector2.DOWN:
@@ -79,3 +91,31 @@ func AnimDirection() -> String:
 		return "left"
 	else:
 		return "right"
+
+func _take_damage(hit_box: HitBox) -> void:
+	if invulnerable == true:
+		return
+	update_hp(-hit_box.damage)
+	
+	if hp > 0:
+		player_damaged.emit(hit_box)
+	else:
+		# Placeholder - Add Death Handling
+		player_damaged.emit(hit_box)
+		update_hp(max_hp)
+		Hud.ShowCaption.emit("If only it were so easy.", "Jailer Two")
+	pass
+
+func update_hp(delta: int) -> void:
+	hp = clampi(hp + delta, 0, max_hp)
+	pass
+
+func make_invulnerable(_duration: float = 0.5) -> void:
+	invulnerable = true
+	hurtbox.monitoring = false
+	
+	await get_tree().create_timer(_duration).timeout
+	
+	invulnerable = false
+	hurtbox.monitoring = true
+	pass

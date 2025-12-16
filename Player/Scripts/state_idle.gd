@@ -4,7 +4,11 @@ class_name State_Idle extends State
 @onready var attack: State = $"../Attack"
 
 
-## What happens when the player enters this state?
+# What happens when we initialize this state?
+func init() -> void:
+	pass
+
+# What happens when the player enters this state?
 func Enter() -> void:
 	player.UpdateAnimation("idle")
 	pass

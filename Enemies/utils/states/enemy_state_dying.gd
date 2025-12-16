@@ -4,6 +4,7 @@ class_name EnemyStateDying extends EnemyState
 @export var knockback_speed: float = 200.0
 @export var decelerate_speed: float = 10.0
 
+var _damage_position: Vector2
 var _direction: Vector2
 	
 # What happens when we initialize this state?
@@ -14,7 +15,7 @@ func init()-> void:
 # What happens when the enemy enters this state?
 func Enter() -> void:
 	
-	_direction = enemy.global_position.direction_to(PlayerManager.player.global_position) # This knockback should be from the hitbox eventually, not the player's position, so you can knock back away from explosions and such
+	_direction = enemy.global_position.direction_to(_damage_position) # This knockback should be from the hitbox eventually, not the player's position, so you can knock back away from explosions and such
 	
 	enemy.velocity = _direction * -knockback_speed
 	enemy.set_direction(_direction)
@@ -36,7 +37,8 @@ func Process(_delta: float) -> EnemyState:
 func Physics(_delta: float) -> EnemyState:
 	return null
 	
-func _on_enemy_dying() -> void:
+func _on_enemy_dying(hit_box: HitBox) -> void:
+	_damage_position = hit_box.global_position
 	state_machine.change_state(self)
 
 func _on_animation_finished(_a: String) -> void:
