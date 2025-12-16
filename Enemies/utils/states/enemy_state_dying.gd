@@ -18,7 +18,7 @@ func Enter() -> void:
 	
 	enemy.velocity = _direction * -knockback_speed
 	enemy.set_direction(_direction)
-	enemy.set_animation(anim_name) # This should have a unique death animation, replace with anim_name when that exists
+	enemy.set_animation(anim_name)
 	
 	enemy.animation_player.animation_finished.connect(_on_animation_finished)
 	pass

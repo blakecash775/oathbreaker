@@ -47,8 +47,8 @@ func set_direction(_new_direction: Vector2) -> bool:
 func set_animation(animation: String)-> void:
 	animation_player.play(animation) # Once enemies can turn, this will need to be state + "_" + anim_direction(), https://www.youtube.com/watch?v=OiOIr1ZApzk 19:41
 
-func _take_damage(damage: int) -> void:
-	hp -= damage
+func _take_damage(hit_box: HitBox) -> void:
+	hp -= hit_box.damage
 	if hp > 0:
 		enemy_damaged.emit()
 	else:

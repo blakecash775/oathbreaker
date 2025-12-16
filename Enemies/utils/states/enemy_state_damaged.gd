@@ -19,7 +19,7 @@ func init()-> void:
 func Enter() -> void:
 	_animation_finished = false
 	
-	_direction = enemy.global_position.direction_to(PlayerManager.player.global_position) # This knockback should be from the hitbox eventually, not the player's position, so you can knock back away from explosions and such
+	_direction = enemy.global_position.direction_to(PlayerManager.player.global_position)
 	
 	enemy.velocity = _direction * -knockback_speed
 	enemy.set_direction(_direction)
