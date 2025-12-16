@@ -63,7 +63,6 @@ func update_animation(state: String) -> void:
 	if _placeholder_tween:
 		_placeholder_tween.kill()
 	sprite.position = Vector2.ZERO
-	sprite.scale = Vector2(2,2)
 
 	# Placeholder for attack and walk, replace with real animations
 	if state == 'attack':

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctra6xb7fpc4r"
-path="res://.godot/imported/Breaker1-Sheet.png-ac4d26c2eaab3a8dc479cf6e539047d5.ctex"
+uid="uid://bvwwp0rraktxy"
+path="res://.godot/imported/breaker64.png-17fef32c1c4271f24974df7bc9f8b97e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprites/Breaker1-Sheet.png"
-dest_files=["res://.godot/imported/Breaker1-Sheet.png-ac4d26c2eaab3a8dc479cf6e539047d5.ctex"]
+source_file="res://Player/Sprites/breaker64.png"
+dest_files=["res://.godot/imported/breaker64.png-17fef32c1c4271f24974df7bc9f8b97e.ctex"]
 
 [params]
 
