@@ -15,7 +15,7 @@ func Enter() -> void:
 	hitbox.monitoring = true
 	# Bad substitute for no attack animation, use the commented code under it once you have a real one 
 	await get_tree().create_timer(0.2).timeout
-	EndAttack()
+	EndAttack() # I'm not sure there's any cooldown on attacking right now, despite the animation playing
 	# animation_player.animation_finished.connect(EndAttack)
 	pass
 

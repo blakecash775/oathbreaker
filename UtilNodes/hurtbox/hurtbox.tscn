@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy4kxtfcn4i7q"]
+[gd_scene load_steps=2 format=3 uid="uid://dc82wb7hahs71"]
 
 [ext_resource type="Script" uid="uid://rmfdh62ug2yj" path="res://UtilNodes/hurtbox/hurtbox.gd" id="1_1kroe"]
 

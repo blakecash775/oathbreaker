@@ -5,7 +5,7 @@ class_name EnemyStateIdle extends EnemyState
 @export_category("AI")
 @export var state_duration_min: float = 0.5
 @export var state_duration_max: float = 1.5
-@export var after_idle_state: EnemyState
+@export var next_state: EnemyState
 
 var _timer: float
 	
@@ -27,7 +27,7 @@ func Exit() -> void:
 func Process(_delta: float) -> EnemyState:
 	_timer -= _delta
 	if _timer <= 0:
-		return after_idle_state
+		return next_state
 	return null
 
 # What happens during the _physics_process update in this State?

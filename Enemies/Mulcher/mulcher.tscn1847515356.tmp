@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5ayumc4ln2ft"]
+[gd_scene load_steps=13 format=3 uid="uid://b5ayumc4ln2ft"]
 
 [ext_resource type="Script" uid="uid://c10dvkofnrg4d" path="res://Enemies/utils/enemy.gd" id="1_d3gyp"]
 [ext_resource type="Texture2D" uid="uid://bbi5jg07gsysi" path="res://Enemies/Mulcher/Mulcher.png" id="2_o41rw"]
@@ -66,45 +66,15 @@ tracks/1/keys = {
 "values": [Color(1, 0, 1, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_i4b0a"]
-resource_name = "dying"
-length = 0.45
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.43333334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 0, 1, 1), Color(1, 0, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i4b0a"]
 _data = {
 &"RESET": SubResource("Animation_r1tct"),
-&"damaged": SubResource("Animation_po0yw"),
-&"dying": SubResource("Animation_i4b0a")
+&"damaged": SubResource("Animation_po0yw")
 }
 
 [node name="Mulcher" type="CharacterBody2D"]
 collision_mask = 17
 script = ExtResource("1_d3gyp")
-hp = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -20)

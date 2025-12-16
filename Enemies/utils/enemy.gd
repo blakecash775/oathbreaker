@@ -2,6 +2,7 @@ class_name Enemy extends CharacterBody2D
 
 signal direction_changed(new_direction: Vector2)
 signal enemy_damaged()
+signal enemy_dying()
 
 const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP] # If we want to support diagonals (We do) this will need an update.
 
@@ -13,11 +14,13 @@ var knockback_direction: Vector2 = Vector2.ZERO
 var player: Player
 
 @onready var state_machine: EnemyStateMachine = $EnemyStateMachine
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var hurtbox: HurtBox = $Hurtbox
 
 func _ready():
 	state_machine.initialize(self)
 	player = PlayerManager.player
-	$Hurtbox.Damaged.connect(TakeDamage)
+	hurtbox.Damaged.connect(_take_damage)
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
@@ -41,5 +44,12 @@ func set_direction(_new_direction: Vector2) -> bool:
 	direction_changed.emit(new_dir)
 	return true
 
-func TakeDamage(_damage: int):
-	pass
+func set_animation(animation: String)-> void:
+	animation_player.play(animation) # Once enemies can turn, this will need to be state + "_" + anim_direction(), https://www.youtube.com/watch?v=OiOIr1ZApzk 19:41
+
+func _take_damage(damage: int) -> void:
+	hp -= damage
+	if hp > 0:
+		enemy_damaged.emit()
+	else:
+		enemy_dying.emit()
