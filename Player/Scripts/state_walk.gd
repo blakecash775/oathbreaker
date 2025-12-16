@@ -2,7 +2,7 @@ class_name State_Walk extends State
 
 # Possibly move these out to more robust speed controller for combat
 @export var move_speed: float = 100.0
-@export var acceleration: float = 0.1
+@export var acceleration: float = 0.5
 @export var max_speed: float = 300.0
 
 @onready var idle: State = $"../Idle"
@@ -28,7 +28,7 @@ func Process(_delta: float) -> State:
 		return idle
 
 	if move_speed < max_speed:
-		move_speed = move_speed + acceleration
+		move_speed += acceleration * _delta * 60.0  # Normalized to ~60fps
 
 	player.velocity = player.direction * move_speed
 

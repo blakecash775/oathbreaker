@@ -15,7 +15,7 @@ func init()-> void:
 # What happens when the enemy enters this state?
 func Enter() -> void:
 	
-	_direction = enemy.global_position.direction_to(_damage_position) # This knockback should be from the hitbox eventually, not the player's position, so you can knock back away from explosions and such
+	_direction = enemy.global_position.direction_to(_damage_position)
 	
 	enemy.velocity = _direction * -knockback_speed
 	enemy.set_direction(_direction)
@@ -26,7 +26,7 @@ func Enter() -> void:
 
 # What happens when the enemy exits this state?
 func Exit() -> void:
-	pass
+	enemy.animation_player.animation_finished.disconnect(_on_animation_finished)
 
 # What happens during the _process update in this State?
 func Process(_delta: float) -> EnemyState:

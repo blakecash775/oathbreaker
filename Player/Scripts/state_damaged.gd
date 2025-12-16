@@ -1,7 +1,7 @@
 class_name State_Damaged extends State
 
 @export var knockback_speed: float = 200
-@export var decelerate_speed: float = 10.0
+@export var decelerate_speed: float = 1.0
 @export var invulnerable_duration: float = 0.5
 
 var hit_box: HitBox
@@ -36,6 +36,7 @@ func Exit() -> void:
 
 # What happens during the _process update in this State?
 func Process(_delta: float) -> State:
+	player.velocity -= player.velocity * decelerate_speed * _delta
 	return next_state
 
 # What happens during the _physics_process update in this State?

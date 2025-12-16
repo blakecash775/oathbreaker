@@ -37,7 +37,7 @@ func _player_entered(_p: Node2D) -> void:
 func _update_area() -> void:
 	var new_rect: Vector2 = Vector2(32, 32) # Need to change if I change tile size
 	var new_position: Vector2 = Vector2.ZERO
-	
+
 	if side == SIDE.TOP:
 		new_rect.x *= size
 		new_position.y -= 16
@@ -50,9 +50,11 @@ func _update_area() -> void:
 	elif side == SIDE.RIGHT:
 		new_rect.y *= size
 		new_position.x += 16
-		
+
 	if collision_shape == null:
 		collision_shape = get_node("CollisionShape2D")
-	
+
+	if not collision_shape.shape.is_local_to_scene():
+		collision_shape.shape = collision_shape.shape.duplicate()
 	collision_shape.shape.size = new_rect
 	collision_shape.position = new_position
