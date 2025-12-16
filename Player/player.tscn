@@ -292,6 +292,4 @@ debug_color = Color(0.99719375, 0, 0.18085247, 0.41960785)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, 3)
-shape = SubResource("CircleShape2D_od3ui")
-debug_color = Color(0.99719375, 0, 0.18085247, 0.41960785)
+shape = SubResource("CircleShape2D_edjgo")
