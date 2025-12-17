@@ -28,5 +28,3 @@ func load_new_zone(
 	
 	await get_tree().process_frame
 	zone_loaded.emit()
-	
-	Hud.show_caption.emit("Look at him, trying to put it all back together.", "Jailer One") # This needs to be handled somewhere else eventually

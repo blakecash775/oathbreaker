@@ -98,10 +98,12 @@ func _take_damage(hit_box: HitBox) -> void:
 	if hp > 0:
 		player_damaged.emit(hit_box)
 	else:
-		# Placeholder - Add Death Handling
+		# Really Temp Placeholder - Add Real Death Handling Function - He slides after too
 		player_damaged.emit(hit_box)
-		update_hp(max_hp)
 		Hud.show_caption.emit("If only it were so easy.", "Jailer Two")
+		PlayerManager.player_spawned = false
+		ZoneManager.load_new_zone('res://Zones/prison.tscn', '', Vector2(0,0))
+		update_hp(max_hp)
 
 func update_hp(delta: int) -> void:
 	hp = clampi(hp + delta, 0, max_hp)
