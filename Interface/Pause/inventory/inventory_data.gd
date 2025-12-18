@@ -11,3 +11,7 @@ func add_item(item: ItemData) -> bool: # quantity https://www.youtube.com/watch?
 				return true
 
 	return false
+
+func clear_entire_inventory() -> void:
+	for i in slots.size():
+		slots[i] = null

@@ -101,6 +101,7 @@ func _take_damage(hit_box: HitBox) -> void:
 		# Really Temp Placeholder - Add Real Death Handling Function - He slides after too
 		player_damaged.emit(hit_box)
 		Hud.show_dialogue.emit("player_death")
+		PlayerManager.INVENTORY_DATA.clear_entire_inventory()
 		PlayerManager.player_spawned = false
 		ZoneManager.load_new_zone('res://Zones/prison.tscn', '', Vector2(0,0))
 		update_hp(max_hp)
