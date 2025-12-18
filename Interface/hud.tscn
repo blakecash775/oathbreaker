@@ -50,3 +50,12 @@ offset_right = 26.0
 offset_bottom = 27.0
 mouse_filter = 1
 color = Color(0.6745098, 0, 0, 1)
+
+[node name="BackgroundRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -134.0
+offset_top = 16.0
+offset_right = 26.0
+offset_bottom = 27.0
+mouse_filter = 1
+color = Color(0.6745098, 0, 0, 0.49411765)
