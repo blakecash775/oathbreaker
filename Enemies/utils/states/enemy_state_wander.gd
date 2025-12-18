@@ -4,7 +4,7 @@ class_name EnemyStateWalk extends EnemyState
 @export var walk_speed: float = 20.0
 
 @export_category("AI")
-@export var state_animation_duration: float = 0.6
+@export var state_animation_duration: float = 0.7
 @export var state_cycles_min: int = 1
 @export var state_cycles_max: int = 3
 @export var next_state: EnemyState

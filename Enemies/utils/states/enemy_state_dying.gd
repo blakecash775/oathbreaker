@@ -1,8 +1,8 @@
 class_name EnemyStateDying extends EnemyState
 
 @export var anim_name: String = "dying"
-@export var knockback_speed: float = 200.0
-@export var decelerate_speed: float = 10.0
+@export var knockback_speed: float = 500.0
+@export var decelerate_speed: float = 5.0
 
 var _damage_position: Vector2
 var _direction: Vector2

@@ -1,8 +1,8 @@
 class_name EnemyStateDamaged extends EnemyState
 
 @export var anim_name: String = "damaged"
-@export var knockback_speed: float = 200.0
-@export var decelerate_speed: float = 10.0
+@export var knockback_speed: float = 500.0
+@export var decelerate_speed: float = 5.0
 
 @export_category("AI")
 @export var next_state: EnemyState
