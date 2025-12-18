@@ -45,6 +45,9 @@ func set_direction(_new_direction: Vector2) -> bool:
 	return true
 
 func set_animation(animation: String)-> void:
+	if animation == 'idle':
+		animation_player.stop(true) # true = keep_state, preserves modulate instead of resetting
+		return
 	animation_player.play(animation) # Once enemies can turn, this will need to be state + "_" + anim_direction(), https://www.youtube.com/watch?v=OiOIr1ZApzk 19:41
 
 func _take_damage(hit_box: HitBox) -> void:

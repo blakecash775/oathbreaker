@@ -1,10 +1,10 @@
-class_name EnemyStateWander extends EnemyState
+class_name EnemyStateWalk extends EnemyState
 
 @export var anim_name: String = "walk"
 @export var walk_speed: float = 20.0
 
 @export_category("AI")
-@export var state_animation_duration: float = 0.5
+@export var state_animation_duration: float = 0.6
 @export var state_cycles_min: int = 1
 @export var state_cycles_max: int = 3
 @export var next_state: EnemyState
@@ -23,6 +23,7 @@ func enter() -> void:
 	_direction = enemy.DIR_4[rand]
 	enemy.velocity = _direction * walk_speed
 	enemy.set_direction(_direction)
+	enemy.set_animation(anim_name)
 
 # What happens when the enemy exits this state?
 func exit() -> void:
