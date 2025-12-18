@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl7peno2ciktr"]
+
+[ext_resource type="Script" uid="uid://b6pawiva1wnf1" path="res://Interface/Pause/inventory/inventory_slot_ui.gd" id="1_hpv85"]
+[ext_resource type="Texture2D" uid="uid://c2y5lftj3v4pj" path="res://Weapons/ChainAxe/FullAxe.png" id="1_jr3pn"]
+
+[node name="InventorySlot" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_hpv85")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("1_jr3pn")

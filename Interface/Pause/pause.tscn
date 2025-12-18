@@ -1,12 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://kf0khb36g0h5"]
+[gd_scene load_steps=6 format=3 uid="uid://kf0khb36g0h5"]
 
 [ext_resource type="Script" uid="uid://bx3028vds16q2" path="res://Interface/Pause/pause.gd" id="1_6bpq2"]
+[ext_resource type="PackedScene" uid="uid://bl7peno2ciktr" path="res://Interface/Pause/inventory/inventory_slot.tscn" id="2_pttgs"]
+[ext_resource type="Script" uid="uid://hxojkvixj5mc" path="res://Interface/Pause/inventory/inventory_ui.gd" id="2_tymi6"]
+[ext_resource type="Resource" uid="uid://bww6ilgi3d618" path="res://Interface/Pause/inventory/player_inventory.tres" id="3_2wx6c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bpq2"]
+bg_color = Color(0, 0, 0, 0.78431374)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.14767182, 0.14767182, 0.1476717, 1)
+border_blend = true
 
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_6bpq2")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,16 +35,55 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.39215687)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.5
+offset_top = -356.0
+offset_right = 28.5
+offset_bottom = -333.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Paused"
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -28.5
-offset_top = 79.5
-offset_right = 28.5
-offset_bottom = 102.5
+offset_left = -35.0
+offset_top = -35.0
+offset_right = 35.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Paused"
+theme_override_styles/panel = SubResource("StyleBoxFlat_6bpq2")
+
+[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+script = ExtResource("2_tymi6")
+data = ExtResource("3_2wx6c")
+
+[node name="InventorySlot" parent="Control/PanelContainer/GridContainer" instance=ExtResource("2_pttgs")]
+layout_mode = 2
+
+[node name="ItemFlavorText" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = 42.5
+offset_right = 61.0
+offset_bottom = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Test Flavor Text"

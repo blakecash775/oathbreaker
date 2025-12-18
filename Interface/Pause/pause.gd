@@ -1,6 +1,11 @@
 extends CanvasLayer
 
+signal shown
+signal hidden
+
 var is_paused: bool = false
+
+@onready var item_flavor_text: Label = $Control/ItemFlavorText
 
 func _ready() -> void:
 	hide_pause()
@@ -17,8 +22,13 @@ func show_pause() -> void:
 	get_tree().paused = true
 	visible = true
 	is_paused = true
+	shown.emit()
 
 func hide_pause() -> void:
 	get_tree().paused = false
 	visible = false
 	is_paused = false
+	hidden.emit()
+
+func update_item_flavor_text(new_text: String) -> void:
+	item_flavor_text.text = new_text

@@ -1,4 +1,4 @@
-class_name ability_data extends Resource
+class_name AbilityData extends Resource
 
 @export var name: String = ""
 @export_multiline var flavor_text: String = "" #Remove?
