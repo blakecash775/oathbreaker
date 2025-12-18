@@ -1,0 +1,118 @@
+[gd_scene load_steps=11 format=3 uid="uid://ctiaxcnn6yxpa"]
+
+[ext_resource type="Script" uid="uid://c10dvkofnrg4d" path="res://Enemies/utils/enemy.gd" id="1_hcp3d"]
+[ext_resource type="Texture2D" uid="uid://3pm2qso0l6q0" path="res://Enemies/haunt/haunt.png" id="2_i6jga"]
+[ext_resource type="PackedScene" uid="uid://bkktiwv7ksq48" path="res://Zones/hurtbox.tscn" id="3_jv5ua"]
+[ext_resource type="Script" uid="uid://dcdy2elhbxras" path="res://Enemies/utils/enemy_state_machine.gd" id="5_m128l"]
+[ext_resource type="Script" uid="uid://coexnikw8raa" path="res://Enemies/utils/states/enemy_state_idle.gd" id="6_od6qj"]
+[ext_resource type="Script" uid="uid://dgnqrh2whvgp0" path="res://Enemies/utils/states/enemy_state_wander.gd" id="7_yrty0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_loo6i"]
+
+[sub_resource type="Animation" id="Animation_r1tct"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ch2b3"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i4b0a"]
+_data = {
+&"RESET": SubResource("Animation_r1tct"),
+&"walk": SubResource("Animation_ch2b3")
+}
+
+[node name="Haunt" type="CharacterBody2D"]
+modulate = Color(0, 0, 0, 0.6)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_hcp3d")
+hp = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -20)
+texture = ExtResource("2_i6jga")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_jv5ua")]
+light_mask = 0
+visibility_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+light_mask = 0
+visibility_layer = 0
+position = Vector2(0, -19)
+shape = SubResource("CapsuleShape2D_loo6i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+visibility_layer = 0
+position = Vector2(0, -19)
+shape = SubResource("CapsuleShape2D_loo6i")
+
+[node name="EnemyStateMachine" type="Node2D" parent="."]
+script = ExtResource("5_m128l")
+
+[node name="Idle" type="Node2D" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_od6qj")
+state_duration_min = 10.0
+state_duration_max = 30.0
+next_state = NodePath("../Walk")
+
+[node name="Walk" type="Node2D" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("7_yrty0")
+next_state = NodePath("../Idle")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_i4b0a")
+}

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://dxvhpjk4f7ch6"]
+[gd_scene load_steps=7 format=4 uid="uid://dxvhpjk4f7ch6"]
 
 [ext_resource type="Script" uid="uid://b1vc62xth8ftn" path="res://Zones/ZoneHelpers/zone.gd" id="1_6csjv"]
 [ext_resource type="PackedScene" uid="uid://bnhmglu1jvy07" path="res://Tilemaps/dark_forest.tscn" id="2_ifyd8"]
 [ext_resource type="PackedScene" uid="uid://b5ayumc4ln2ft" path="res://Enemies/Mulcher/mulcher.tscn" id="3_6ttwy"]
 [ext_resource type="PackedScene" uid="uid://cdh40t5nr2012" path="res://Zones/ZoneHelpers/playerspawn.tscn" id="4_5ogt7"]
 [ext_resource type="PackedScene" uid="uid://6sp01qfpyqq8" path="res://Zones/ZoneHelpers/enemyspawn.tscn" id="5_ifyd8"]
+[ext_resource type="PackedScene" uid="uid://ctiaxcnn6yxpa" path="res://Enemies/haunt/haunt.tscn" id="6_6ttwy"]
 
 [node name="Forest" type="Node2D"]
 y_sort_enabled = true
@@ -38,3 +39,6 @@ enemy_scene = ExtResource("3_6ttwy")
 [node name="EnemySpawn5" parent="." instance=ExtResource("5_ifyd8")]
 position = Vector2(681, 502)
 enemy_scene = ExtResource("3_6ttwy")
+
+[node name="Haunt" parent="." instance=ExtResource("6_6ttwy")]
+position = Vector2(-555, -327)

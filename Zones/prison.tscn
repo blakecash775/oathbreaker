@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://dxudg8tk7wsj5"]
+[gd_scene load_steps=8 format=4 uid="uid://dxudg8tk7wsj5"]
 
 [ext_resource type="Script" uid="uid://b1vc62xth8ftn" path="res://Zones/ZoneHelpers/zone.gd" id="1_ggtou"]
 [ext_resource type="PackedScene" uid="uid://cdh40t5nr2012" path="res://Zones/ZoneHelpers/playerspawn.tscn" id="2_bivxn"]
@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://0e5hhu8s5fg1" path="res://Zones/ZoneHelpers/ZoneTransition.tscn" id="4_myuaf"]
 [ext_resource type="PackedScene" path="res://Items/Utils/item_pickup/ItemPickup.tscn" id="5_cpk4x"]
 [ext_resource type="Resource" uid="uid://d3pjpmgh15idq" path="res://Weapons/ChainAxe/chain_axe.tres" id="6_20rsc"]
+[ext_resource type="PackedScene" uid="uid://ctiaxcnn6yxpa" path="res://Enemies/haunt/haunt.tscn" id="7_20rsc"]
 
 [node name="Prison" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_ggtou")
 
 [node name="Playerspawn" parent="." instance=ExtResource("2_bivxn")]
@@ -33,3 +35,6 @@ side = 2
 [node name="ItemPickup" parent="." instance=ExtResource("5_cpk4x")]
 position = Vector2(199, -121)
 item_data = ExtResource("6_20rsc")
+
+[node name="Haunt" parent="." instance=ExtResource("7_20rsc")]
+position = Vector2(363, 157)
