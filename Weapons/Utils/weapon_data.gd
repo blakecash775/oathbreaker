@@ -1,8 +1,5 @@
-class_name WeaponData extends Resource
+class_name WeaponData extends ItemData
 
-@export var name: String = ""
-@export_multiline var flavor_text: String = ""
-@export var texture: Texture2D
 @export var abilities: Array[AbilityData] = [] # PLACEHOLDER
 @export var style: String = "" # PLACEHOLDER
 @export var speed: String = "" # PLACEHOLDER
