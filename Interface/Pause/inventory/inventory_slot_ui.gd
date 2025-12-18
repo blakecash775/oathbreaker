@@ -16,7 +16,6 @@ func set_slot_data(value: SlotData) -> void:
 	texture_rect.texture = slot_data.weapon_data.texture # Genericize to item after that's implemented
 
 func item_focused() -> void:
-	print(slot_data)
 	if slot_data != null:
 		if slot_data.weapon_data != null:
 			Pause.update_item_flavor_text(slot_data.weapon_data.flavor_text)

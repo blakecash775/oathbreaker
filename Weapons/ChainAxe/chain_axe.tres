@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="weapon_data" load_steps=3 format=3 uid="uid://d3pjpmgh15idq"]
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://d3pjpmgh15idq"]
 
 [ext_resource type="Script" uid="uid://cg7tcsxbqvos7" path="res://Weapons/Utils/weapon_data.gd" id="1_pfabn"]
 [ext_resource type="Texture2D" uid="uid://c2y5lftj3v4pj" path="res://Weapons/ChainAxe/FullAxe.png" id="2_hkuh6"]
@@ -6,7 +6,11 @@
 [resource]
 script = ExtResource("1_pfabn")
 name = "Chain Axe"
-flavor_text = "You've never swung it before... PLACEHOLDER"
+flavor_text = "Weapons of order"
 texture = ExtResource("2_hkuh6")
-ability = null
+abilities = null
+style = null
+speed = null
+base_damage = null
+passives = null
 metadata/_custom_type_script = "uid://cg7tcsxbqvos7"
