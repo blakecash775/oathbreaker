@@ -1,5 +1,6 @@
 extends Node
 const PLAYER = preload("uid://cvudu1fei0nd4")
+const INVENTORY_DATA: InventoryData = preload("uid://bww6ilgi3d618")
 
 var player: Player
 var player_spawned: bool = false
