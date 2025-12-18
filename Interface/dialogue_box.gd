@@ -77,7 +77,7 @@ func _weighted_pick(scripts: Array) -> Dictionary:
 	for script in scripts:
 		total_weight += script.get("chance", 1)
 
-	var roll = randi() % total_weight
+	var roll = randi_range(0, total_weight - 1)
 	var cumulative = 0
 	for script in scripts:
 		cumulative += script.get("chance", 1)

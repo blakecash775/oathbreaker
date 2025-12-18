@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cdh40t5nr2012" path="res://Zones/ZoneHelpers/playerspawn.tscn" id="4_5ogt7"]
 [ext_resource type="PackedScene" uid="uid://6sp01qfpyqq8" path="res://Zones/ZoneHelpers/enemyspawn.tscn" id="5_ifyd8"]
 
-[node name="Playground" type="Node2D"]
+[node name="Forest" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_6csjv")
 
