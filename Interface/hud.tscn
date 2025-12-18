@@ -1,21 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpw3so62wcr8t"]
+[gd_scene load_steps=3 format=3 uid="uid://bpw3so62wcr8t"]
 
 [ext_resource type="Script" uid="uid://bmrps8jm5vy4j" path="res://Interface/hud.gd" id="1_28tah"]
+[ext_resource type="Script" uid="uid://cxyfv5k0pg86y" path="res://Interface/dialogue_box.gd" id="2_dialogue"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_28tah")
 
-[node name="TopCaption" type="Control" parent="."]
+[node name="DialogueBox" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+script = ExtResource("2_dialogue")
 
-[node name="Sprite2D" type="Sprite2D" parent="TopCaption"]
+[node name="Sprite2D" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(32, 32)
 
-[node name="Label" type="Label" parent="TopCaption"]
+[node name="Label" type="Label" parent="DialogueBox"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.25
