@@ -57,7 +57,6 @@ func _on_passive_timer() -> void:
 
 func _get_matching_passive_scripts() -> Array:
 	var matching = []
-	print(conditions)
 	for key in DialogueData.DIALOGUES:
 		var scripts_array = DialogueData.DIALOGUES[key]
 		for script in scripts_array:
