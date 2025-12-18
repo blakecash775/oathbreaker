@@ -84,7 +84,7 @@ func _weighted_pick(scripts: Array) -> Dictionary:
 		if roll < cumulative:
 			return script
 
-	return scripts[0]  # Fallback
+	return scripts[0]  # Fallback - Why do we need this? Can't we just have the math be right?
 
 func play_dialogue(key: String) -> void:
 	_refresh_conditions()

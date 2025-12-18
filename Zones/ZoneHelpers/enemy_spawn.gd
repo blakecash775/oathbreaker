@@ -22,6 +22,7 @@ func _spawn_enemy() -> void:
 
 
 func _on_enemy_dying(_hitbox: HitBox) -> void:
+	current_enemy.enemy_dying.disconnect(_on_enemy_dying)
 	var delay = randf_range(respawn_delay_min, respawn_delay_max)
 	await get_tree().create_timer(delay).timeout
 	_spawn_enemy()
