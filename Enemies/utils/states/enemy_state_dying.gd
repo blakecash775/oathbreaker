@@ -18,6 +18,8 @@ func enter() -> void:
 	enemy.velocity = _direction * -knockback_speed
 	enemy.set_direction(_direction)
 	enemy.set_animation(anim_name)
+	
+	Hud.show_dialogue.emit("enemy_killed")
 
 	enemy.animation_player.animation_finished.connect(_on_animation_finished)
 

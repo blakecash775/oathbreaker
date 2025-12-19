@@ -108,12 +108,12 @@ func play_dialogue(key: String) -> void:
 	_play_script(selected)
 
 func _play_script(script: Dictionary) -> void:
-	_restart_passive_timer()
 
 	var lines = script.get("script", [])
 	if lines.size() == 0:
 		return
-
+		
+	_restart_passive_timer()
 	_dialogue_queue = lines.duplicate()
 	_play_next_line()
 
@@ -139,9 +139,9 @@ func _render_caption(text: String, character: String = "none") -> void:
 	_caption_tween = create_tween()
 	if content_changed:
 		modulate.a = 0.0
-		_caption_tween.tween_property(self, "modulate:a", 1.0, 0.1)
-	_caption_tween.tween_interval(4.0)
-	_caption_tween.tween_property(self, "modulate:a", 0.0, 0.1)
+		_caption_tween.tween_property(self, "modulate:a", 1.0, 0.2)
+	_caption_tween.tween_interval(5.0)
+	_caption_tween.tween_property(self, "modulate:a", 0.0, 0.2)
 	_caption_tween.tween_callback(_on_caption_finished)
 
 func _on_caption_finished() -> void:
