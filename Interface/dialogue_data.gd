@@ -154,15 +154,7 @@ const DIALOGUES = {
 			"chance": 1,
 			"passive": true,
 			"script": [
-				{"character": "Jailer Two", "text": "One night, and it's eating him alive"},
-			]
-		},
-		{
-			"chance": 1,
-			"passive": true,
-			"script": [
-				{"character": "Jailer Two", "text": "One night, and it's eating him alive"},
-				{"character": "Jailer One", "text": "One night, and it ate everything"},
+				{"character": "Jailer Two", "text": "It's eating him alive"},
 			]
 		},
 		{
