@@ -15,7 +15,7 @@ const DIALOGUES = {
 		},
 		# Empty script results in no dialogue - Use for if you don't want someone to always speak
 		{
-			"chance": 2,
+			"chance": 10,
 			"script": []
 		},
 	],
@@ -36,7 +36,13 @@ const DIALOGUES = {
 			]
 		},
 		{
-			"chance": 30,
+			"chance": 1,
+			"script": [
+				{"character": "Jailer One", "text": "Disgusting thing"},
+			]
+		},
+		{
+			"chance": 50,
 			"script": []
 		},
 	],
