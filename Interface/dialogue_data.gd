@@ -129,7 +129,7 @@ const DIALOGUES = {
 			"script": [
 				{"character": "Jailer Two", "text": "Will we be bound to it forever?"},
 				{"character": "Jailer One", "text": "If the world is just"},
-				{"character": "Jailer Two", "text": "Do we deserve such a fate, sister?"},
+				{"character": "Jailer Two", "text": "Do we deserve such a fate?"},
 				{"character": "Jailer One", "text": "..."},
 			]
 		},
