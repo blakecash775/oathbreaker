@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4pamrnaj1pl8"
-path="res://.godot/imported/axe-head.png-01676eef49a3a4e6909eafbdda318fa0.ctex"
+uid="uid://cnxcid0nq686x"
+path="res://.godot/imported/axe-link.png-fb6d72e140a2d623b4e8a1f7673a247b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Weapons/ChainAxe/axe-head.png"
-dest_files=["res://.godot/imported/axe-head.png-01676eef49a3a4e6909eafbdda318fa0.ctex"]
+source_file="res://Items/Weapons/ChainAxe/axe-link.png"
+dest_files=["res://.godot/imported/axe-link.png-fb6d72e140a2d623b4e8a1f7673a247b.ctex"]
 
 [params]
 

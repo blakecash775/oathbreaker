@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://d3pjpmgh15idq"]
+
+[ext_resource type="Script" uid="uid://tud513q4p5e2" path="res://Items/Weapons/Abilities/Utils/ability_data.gd" id="1_mlf2k"]
+[ext_resource type="Script" uid="uid://cg7tcsxbqvos7" path="res://Items/Weapons/Utils/weapon_data.gd" id="1_pfabn"]
+[ext_resource type="Texture2D" uid="uid://c2y5lftj3v4pj" path="res://Items/Weapons/ChainAxe/FullAxe.png" id="2_hkuh6"]
+
+[resource]
+script = ExtResource("1_pfabn")
+base_damage = 2
+name = "Chain Axe"
+flavor_text = "His."
+texture = ExtResource("2_hkuh6")
+metadata/_custom_type_script = "uid://cg7tcsxbqvos7"

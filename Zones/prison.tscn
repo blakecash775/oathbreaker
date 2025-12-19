@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bnhmglu1jvy07" path="res://Tilemaps/dark_forest.tscn" id="2_ggtou"]
 [ext_resource type="PackedScene" uid="uid://0e5hhu8s5fg1" path="res://Zones/ZoneHelpers/ZoneTransition.tscn" id="4_myuaf"]
 [ext_resource type="PackedScene" path="res://Items/Utils/item_pickup/ItemPickup.tscn" id="5_cpk4x"]
-[ext_resource type="Resource" uid="uid://d3pjpmgh15idq" path="res://Weapons/ChainAxe/chain_axe.tres" id="6_20rsc"]
+[ext_resource type="Resource" uid="uid://d3pjpmgh15idq" path="res://Items/Weapons/ChainAxe/chain_axe.tres" id="6_20rsc"]
 [ext_resource type="PackedScene" uid="uid://ctiaxcnn6yxpa" path="res://Enemies/haunt/haunt.tscn" id="7_20rsc"]
 
 [node name="Prison" type="Node2D"]
