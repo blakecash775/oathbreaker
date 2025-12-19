@@ -13,6 +13,19 @@ const DIALOGUES = {
 				{"character": "Jailer One", "text": "A shame"},
 			]
 		},
+		{
+			"chance": 1,
+			"script": [
+				{"character": "Jailer One", "text": "For a moment, a world without his cruelty"},
+				{"character": "Jailer Two", "text": "But just a moment"},
+			]
+		},
+		{
+			"chance": 1,
+			"script": [
+				{"character": "Jailer One", "text": "You're alive. Fight."},
+			]
+		},
 		# Empty script results in no dialogue - Use for if you don't want someone to always speak
 		{
 			"chance": 10,
@@ -39,6 +52,18 @@ const DIALOGUES = {
 			"chance": 1,
 			"script": [
 				{"character": "Jailer One", "text": "Disgusting thing"},
+			]
+		},
+		{
+			"chance": 1,
+			"script": [
+				{"character": "Jailer One", "text": "Felt good, didn't it?"},
+			]
+		},
+		{
+			"chance": 1,
+			"script": [
+				{"character": "Jailer One", "text": "Do you enjoy hurting other people?"},
 			]
 		},
 		{
@@ -94,8 +119,8 @@ const DIALOGUES = {
 			"chance": 1,
 			"passive": true,
 			"script": [
-				{"character": "Jailer One", "text": "He serves himself now"},
-				{"character": "Jailer Two", "text": "He's better at it."},
+				{"character": "Jailer One", "text": "It serves itself now"},
+				{"character": "Jailer Two", "text": "It's better at it."},
 			]
 		},
 		{
@@ -114,7 +139,47 @@ const DIALOGUES = {
 			"script": [
 				{"character": "Jailer Two", "text": "Shattered glass"},
 				{"character": "Jailer One", "text": "From different vases"},
-				{"character": "Jailer Two", "text": "He thinks the pieces might still fit"},
+				{"character": "Jailer Two", "text": "It thinks the pieces might still fit"},
+			]
+		},
+		{
+			"chance": 1,
+			"passive": true,
+			"script": [
+				{"character": "Jailer Two", "text": "Did he love her?"},
+				{"character": "Jailer One", "text": "He thinks he did"},
+			]
+		},
+		{
+			"chance": 1,
+			"passive": true,
+			"script": [
+				{"character": "Jailer Two", "text": "One night, and it's eating him alive"},
+			]
+		},
+		{
+			"chance": 1,
+			"passive": true,
+			"script": [
+				{"character": "Jailer Two", "text": "One night, and it's eating him alive"},
+				{"character": "Jailer One", "text": "One night, and it ate everything"},
+			]
+		},
+		{
+			"chance": 1,
+			"passive": true,
+			"script": [
+				{"character": "Jailer Two", "text": "Nothing is big"},
+				{"character": "Jailer Two", "text": "Everything is very, very small"},
+				{"character": "Jailer Two", "text": "There is almost nothing"},
+			]
+		},
+		{
+			"chance": 1,
+			"passive": true,
+			"script": [
+				{"character": "Jailer Two", "text": "He's doing what he thinks is right."},
+				{"character": "Jailer One", "text": "He has to be stopped."},
 			]
 		},
 	],

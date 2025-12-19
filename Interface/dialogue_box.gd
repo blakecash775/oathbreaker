@@ -140,7 +140,7 @@ func _render_caption(text: String, character: String = "none") -> void:
 	if content_changed:
 		modulate.a = 0.0
 		_caption_tween.tween_property(self, "modulate:a", 1.0, 0.2)
-	_caption_tween.tween_interval(5.0)
+	_caption_tween.tween_interval(5.0) # making this dynamic based on the length of the line might be cool
 	_caption_tween.tween_property(self, "modulate:a", 0.0, 0.2)
 	_caption_tween.tween_callback(_on_caption_finished)
 
